@@ -1,0 +1,128 @@
+
+
+<div class="sidebar" data-active-color="blue" data-background-color="black" data-image="{{ url_for('static', filename='admin/img/sidebar-1.jpg') }}">
+    <!--
+Tip 1: You can change the color of active element of the sidebar using: data-active-color="purple | blue | green | orange | red | rose"
+Tip 2: you can also add an image using data-image tag
+Tip 3: you can change the color of the sidebar with data-background-color="white | black"
+-->
+
+    <div class="sidebar-wrapper">
+        <div class="user">
+            <div class="photo">
+                <img src="{{ url_for('static', filename='admin/img/faces/avatar.jpg') }}" />
+            </div>
+            <div class="info">
+                <a data-toggle="collapse" href="dashboard.html#collapseExample" class="collapsed">
+                    Tania Andrew
+                    <b class="caret"></b>
+                </a>
+                <div class="collapse" id="collapseExample">
+                    <ul class="nav">
+                        <li>
+                            <a href="dashboard.html#">My Profile</a>
+                        </li>
+                        <li>
+                            <a href="dashboard.html#">Edit Profile</a>
+                        </li>
+                        <li>
+                            <a href="dashboard.html#">Settings</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <ul class="nav">
+            <li class="active">
+                <a href="{{ url_for('admin_bp.index') }}">
+                    <i class="material-icons">dashboard</i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="dashboard.html#movieExamples">
+                    <i class="material-icons">movie</i>
+                    <p>Movie
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="movieExamples">
+                    <ul class="nav">
+                        <li>
+                            <a href="{{ url_for('admin_bp.upload_movie') }}">Upload Movie</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('admin_bp.list_movie', page=1) }}">All Movie</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="dashboard.html#formsExamples">
+                    <i class="material-icons">label</i>
+                    <p>Tag
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="formsExamples">
+                    <ul class="nav">
+                        <li>
+                            <a href="{{ url_for('admin_bp.add_tag') }}">Add Tag</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('admin_bp.list_tag', page=1) }}">All Tag</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="dashboard.html#authExamples">
+                    <i class="material-icons">security</i>
+                    <p>Authority
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="authExamples">
+                    <ul class="nav">
+                        <li>
+                            <a href="{{ url_for('admin_bp.add_auth') }}">Add Auth</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('admin_bp.list_auth', page=1) }}">All Auth</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="dashboard.html#roleExamples">
+                    <i class="material-icons">recent_actors</i>
+                    <p>Role
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="roleExamples">
+                    <ul class="nav">
+                        <li>
+                            <a href="{{ url_for('admin_bp.add_role') }}">Add Role</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('admin_bp.list_role', page=1) }}">All Role</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="{{ url_for('admin_bp.list_user', page=1) }}">
+                    <i class="material-icons">people</i>
+                    <p>Users</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('admin_bp.list_admin') }}">
+                    <i class="material-icons">person_outline</i>
+                    <p>Administrators</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

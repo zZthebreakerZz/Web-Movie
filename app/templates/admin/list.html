@@ -1,0 +1,47 @@
+{% extends "admin/index.html" %}
+{% import "admin/_paginate.html" as pg %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-icon" data-background-color="blue">
+                    <i class="material-icons">assignment</i>
+                </div>
+                <h4 class="card-title">{{ title }}</h4>
+                <div class="card-content">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Name</th>
+                                    <th>Created</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for d in data.items %}
+                                <tr>
+                                    <td class="text-center">{{ data.items.index(d) + 1 }}</td>
+                                    <td>{{ d.name }}</td>
+                                    <td>{{ d.created }}</td>
+                                    <td class="td-actions">
+                                        <a href="{{ url_for('admin_bp.edit_' + type, id=d.id) }}" rel="tooltip" class="btn btn-success">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                        <a href="{{ url_for('admin_bp.delete_' + type, id=d.id) }}" rel="tooltip" class="btn btn-danger">
+                                            <i class="material-icons">close</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {{ pg.page(data, 'admin_bp.list_' + type) }}
+        </div>
+    </div>
+{% endblock %}

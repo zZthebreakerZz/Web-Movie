@@ -1,0 +1,170 @@
+{% extends 'admin/index.html' %}
+
+{% block css %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <form method="POST" action="" enctype="multipart/form-data" class="form-horizontal">
+                {{ form.hidden_tag() }}
+                <div class="card-header card-header-text" data-background-color="blue">
+                    <h4 class="card-title">Upload Movie</h4>
+                </div>
+                <div class="card-content">
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">{{ form.name.label }}</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                {{ form.name(class="form-control", placeholder="Enter the title") }}
+                                {% for err in form.name.errors %}
+                                <div class="alert alert-danger">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                    <span>{{ err }}</span>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <label class="col-sm-2 label-on-left">{{ form.poster.label}}</label>
+                            <div class="col-sm-10">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    {{ form.poster(class="form-control", placeholder="Poster Link") }}
+                                    {% for err in form.poster.errors %}
+                                        <div class="alert alert-danger">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                            <span>{{ err }}</span>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">{{ form.source.label}}</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                {{ form.source(class="form-control", placeholder="Movie Link") }}
+                                {% for err in form.source.errors %}
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                        <span>{{ err }}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">{{ form.desc.label }}</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                {{ form.desc(class="form-control", cols="30", rows="5", placeholder="Tell something about movie", style="padding-top: 8.4px;") }}
+                                {% for err in form.desc.errors %}
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                        <span>{{ err }}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">{{ form.tag.label }}</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                {{ form.tag(class="js-example-basic-multiple form-control") }}
+                                {% for err in form.tag.errors %}
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                        <span>{{ err }}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">{{ form.country.label}}</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                {{ form.country(class="form-control", placeholder="") }}
+                                {% for err in form.country.errors %}
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                        <span>{{ err }}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">{{ form.release.label }}</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                {{ form.release(class="form-control") }}
+                                {% for err in form.release.errors %}
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                        <span>{{ err }}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">{{ form.length.label }}</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                {{ form.length(class="form-control") }}
+                                {% for err in form.length.errors %}
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                        <span>{{ err }}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        {{ form.upload(class="btn btn-rose btn-fill") }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script>
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2();
+    });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+{% endblock %}

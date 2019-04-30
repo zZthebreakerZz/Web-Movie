@@ -1,0 +1,31 @@
+{% macro page(data, url) %}
+    {% if data %}
+        <ul class="pagination pagination-sm no-margin pull-right">
+            <li><a href="{{ url_for(url, page=1) }}">First</a></li>
+
+            {% if data.has_prev %}
+                <li><a href="{{ url_for(url, page=data.prev_num) }}">Previous</a></li>
+            {% else %}
+                <li class="disabled"><a href="#">Previous</a></li>
+            {% endif %}
+
+            {% for i in data.iter_pages(left_current=2, right_current=3, left_edge=0, right_edge=0) %}
+                {% if i %}
+                    {% if i == data.page %}
+                        <li class="active"><a href="#">{{ i }}</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for(url, page=i) }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+            {% if data.has_next %}
+                <li><a href="{{ url_for(url, page=data.next_num) }}">Next</a></li>
+            {% else %}
+                <li class="disabled"><a href="#">Next</a></li>
+            {% endif %}
+
+            <li><a href="{{ url_for(url, page=data.pages) }}">Last</a></li>
+        </ul>
+    {% endif %}
+{% endmacro %}
